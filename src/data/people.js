@@ -3,9 +3,9 @@ import {
   fetchRequestPending, fetchRequestSuccess, fetchRequestFailure, fetchPeopleSuccess,
 } from '../actions/index';
 
-const getPeople = () => async dispatch => {
+const getPeople = username => async dispatch => {
   dispatch(fetchRequestPending());
-  axios.get('https://www.themealdb.com/api/json/v1/1/categories.php')
+  axios.get(`https://torre.bio/api/bios/${username}`)
     .then(response => {
       dispatch(fetchRequestSuccess(response.statusText));
       dispatch(fetchPeopleSuccess(response.data.people));

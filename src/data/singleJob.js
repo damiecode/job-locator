@@ -5,7 +5,7 @@ import {
 
 const fetchJob = id => async dispatch => {
   dispatch(fetchRequestPending());
-  axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
+  axios.get(`https://torre.co/api/opportunities/${id}`)
     .then(response => {
       dispatch(fetchSingleJob(response.data.jobs[0]));
     })
