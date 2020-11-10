@@ -8,7 +8,7 @@ const Header = () => (
       <Link className="" to="/">
         <h4 className="Nav-text navbar-brand text-white"> Job Locator </h4>
       </Link>
-        <Link className="" to="/">
+      <Link className="" to="/">
         <h4 className="Nav-text navbar-brand text-white"> Post a Job </h4>
       </Link>
     </div>
