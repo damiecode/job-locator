@@ -3,7 +3,6 @@ import {
   Switch, Route,
 } from 'react-router-dom';
 import '../assets/css/App.css';
-import AllCategories from '../containers/home/home';
 import Header from './header';
 import Footer from './footer';
 
