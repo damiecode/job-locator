@@ -7,9 +7,14 @@ const fetchRequestSuccess = response => ({
   response,
 });
 
-const fetchJobsSuccess = meals => ({
+const fetchJobsSuccess = jobs => ({
   type: 'FETCH_JOBS_SUCCESS',
-  meals,
+  jobs,
+});
+
+const fetchPeopleSuccess = people => ({
+  type: 'FETCH_PEOPLE_SUCCESS',
+  people,
 });
 
 const fetchRequestFailure = error => ({
@@ -17,7 +22,7 @@ const fetchRequestFailure = error => ({
   error,
 });
 
-const fetchJobMeal = details => ({
+const fetchSingleJob = details => ({
   type: 'FETCH_JOB_SUCCESS',
   details,
 });
@@ -29,5 +34,6 @@ export {
   fetchRequestSuccess,
   fetchRequestFailure,
   fetchJobsSuccess,
-  fetchJobMeal,
+  fetchSingleJob,
+  fetchPeopleSuccess,
 };
