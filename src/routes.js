@@ -1,15 +1,7 @@
-const path = require('path');
-const axios = require('axios');
-const cors = require('cors');
 const express = require('express');
-const app = express();
-const PORT = process.env.PORT || 3000;
-const buildPath = path.join(__dirname, '..', 'build');
+const Router = express.Router;
 
-app.use(express.static(buildPath));
-app.use(cors());
-
-app.get('/jobs', async (req, res) => {
+Router.get('/jobs', async (req, res) => {
   try {
     let { id = '', page = 1 } = req.query;
     id = id ? encodeURIComponent(id) : '';
@@ -25,8 +17,4 @@ app.get('/jobs', async (req, res) => {
   } catch (error) {
     res.status(400).send('Error while getting list of jobs.Try again later.');
   }
-});
-
-app.listen(PORT, () => {
-  console.log(`server started on port ${PORT}`);
 });

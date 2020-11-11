@@ -12,6 +12,7 @@ const Search = () => {
   const handleSearch = event => {
     event.preventDefault();
     console.log(state);
+    props.onSearch(state);
   };
 
   const handleChange = event => {
