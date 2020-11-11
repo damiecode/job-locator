@@ -1,15 +1,13 @@
 import React from 'react';
-import {
-  Switch,
-} from 'react-router-dom';
 import '../assets/css/App.css';
 import Header from './header';
 import Footer from './footer';
+import Search from './search';
 
 const App = () => (
   <div className="App">
     <Header />
-    <Switch />
+    <Search />
     <Footer />
   </div>
 );

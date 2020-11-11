@@ -1,3 +1,10 @@
-export const getJobs = state => state.meals;
+export const getJobs = state => state.jobs;
 export const getJobssPending = state => state.pending;
 export const getJobsError = state => state.error;
+export const getImg = state => state.strMealThumb;
+export const getName = state => state.strMeal;
+export const getIntructions = state => state.strInstructions;
+export const getPeople = state => state.person;
+export const categoryName = category => category.strCategory;
+export const categoryDetails = category => category.strCategoryDescription;
+export const categoryImage = category => category.strCategoryThumb;
