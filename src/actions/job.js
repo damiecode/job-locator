@@ -1,10 +1,10 @@
 import axios from 'axios';
 import moment from 'moment';
-import { setErrors } from './errors';
+import { setErrors } from './error';
 
 const BASE_API_URL = 'http://localhost:3000';
 
-export const getJobs = (data) => {
+export const getJobs = data => {
   return async (dispatch) => {
     try {
       let { description, page } = data;

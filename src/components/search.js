@@ -5,21 +5,25 @@ import {
 
 const Search = () => {
   const [state, setState] = useState({
-    description: '',
+    id: '',
+    username: '',
   });
-
-  const handleInputChange = event => {
-    const { name, value } = event.target;
-    if (name === 'full_time') {
-      setState(prevState => ({ ...state, [name]: !prevState.full_time }));
-    } else {
-      setState({ ...state, [name]: value });
-    }
-  };
 
   const handleSearch = event => {
     event.preventDefault();
     console.log(state);
+  };
+
+  const handleChange = event => {
+    if(event.target.name == 'job') {
+      this.setState({
+        job: event.target.value,
+      });
+    } else if (event.target.name == 'people') {
+      this.setState({
+        people: event.target.value,
+      })
+    }
   };
 
   return (
@@ -27,13 +31,18 @@ const Search = () => {
       <Form className="search-form" onSubmit={handleSearch}>
         <Row>
           <Col>
+            <select id="search__select" name="search_item">
+              <option value="job">Job</option>
+              <option value="people">People</option>
+            </select>
+          </Col>
+          <Col>
             <Form.Group controlId="description">
               <Form.Control
                 type="text"
-                name="description"
-                value={state.description || ''}
-                placeholder="Enter search term"
-                onChange={handleInputChange}
+                name="search_text"
+                placeholder="Search Job &amp; People"
+                onChange={handleChange}
               />
             </Form.Group>
           </Col>
@@ -47,4 +56,6 @@ const Search = () => {
     </div>
   );
 };
+
 export default Search;
+
