@@ -1,31 +1,12 @@
-const initialState = {
-  pending: false,
-  jobs: [],
-  error: '',
-};
-
-const jobsReducer = (state = initialState, action) => {
+const jobsReducer = (state = [], action) => {
   switch (action.type) {
-    case 'FETCH_REQUEST_PENDING':
-      return {
-        ...state,
-        pending: true,
-      };
-    case 'FETCH_MEALS_SUCCESS':
-      return {
-        ...state,
-        pending: false,
-        meals: action.jobs,
-      };
-    case 'FETCH_REQUEST_FAILURE':
-      return {
-        ...state,
-        pending: false,
-        error: action.error,
-      };
+    case 'SET_JOBS':
+      return action.jobs;
+    case 'LOAD_MORE_JOBS':
+      return [...state, ...action.jobs];
     default:
       return state;
   }
 };
-
 export default jobsReducer;
+

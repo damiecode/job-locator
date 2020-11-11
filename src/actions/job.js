@@ -1,10 +1,41 @@
-export const getJobs = state => state.jobs;
-export const getJobssPending = state => state.pending;
-export const getJobsError = state => state.error;
-export const getImg = state => state.strMealThumb;
-export const getName = state => state.strMeal;
-export const getIntructions = state => state.strInstructions;
-export const getPeople = state => state.person;
-export const categoryName = category => category.strCategory;
-export const categoryDetails = category => category.strCategoryDescription;
-export const categoryImage = category => category.strCategoryThumb;
+import axios from 'axios';
+import moment from 'moment';
+import { setErrors } from './errors';
+
+const BASE_API_URL = 'http://localhost:3000';
+
+export const getJobs = (data) => {
+  return async (dispatch) => {
+    try {
+      let { description, page } = data;
+      description = description ? encodeURIComponent(description) : '';
+
+      if (page) {
+        page = parseInt(page);
+        page = isNaN(page) ? '' : `&page=${page}`;
+      }
+
+      const jobs = await axios.get(
+        `${BASE_API_URL}/jobs?description=${description}${page}`
+      );
+      const sortedJobs = jobs.data.sort(
+        (a, b) =>
+          moment(new Date(b.created_at)) - moment(new Date(a.created_at))
+      );
+      return dispatch(setJobs(sortedJobs));
+    } catch (error) {
+      error.response && dispatch(setErrors(error.response.data));
+    }
+  };
+};
+
+export const setJobs = (jobs) => ({
+  type: 'SET_JOBS',
+  jobs
+});
+
+export const setLoadMoreJobs = (jobs) => ({
+  type: 'LOAD_MORE_JOBS',
+  jobs
+});
+

@@ -5,12 +5,12 @@ import {
 import thunk from 'redux-thunk';
 import jobsReducer from './jobs';
 import peopleReducer from './people';
-import singleJobReducer from './singleJob';
+import errorReducer from './error';
 
 const rootReducer = combineReducers({
   meals: jobsReducer,
   people: peopleReducer,
-  singleMeal: singleJobReducer,
+  error: errorReducer,
 });
 
 const enhancers = [];

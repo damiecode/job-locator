@@ -6,7 +6,6 @@ import {
 const Search = () => {
   const [state, setState] = useState({
     description: '',
-    location: '',
   });
 
   const handleInputChange = event => {
@@ -39,34 +38,11 @@ const Search = () => {
             </Form.Group>
           </Col>
           <Col>
-            <Form.Group controlId="location">
-              <Form.Control
-                type="text"
-                name="location"
-                value={state.location || ''}
-                placeholder="Enter location"
-                onChange={handleInputChange}
-              />
-            </Form.Group>
-          </Col>
-          <Col>
             <Button variant="primary" type="submit" className="btn-search">
               Search
             </Button>
           </Col>
         </Row>
-        <div className="filters">
-          <Form.Group controlId="full_time">
-            <Form.Check
-              type="checkbox"
-              name="full_time"
-              className="full-time-checkbox"
-              label="Full time only"
-              checked={state.full_time}
-              onChange={handleInputChange}
-            />
-          </Form.Group>
-        </div>
       </Form>
     </div>
   );
